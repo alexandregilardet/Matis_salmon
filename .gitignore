@@ -1,0 +1,11 @@
+unfinished/
+grep/
+Bioinformatics_Programming.py
+.Rhistory
+*.txt
+#not mine
+genind2structure.r
+pie_graph.r
+SNP_on_mt.r
+adegenet.r
+poppr.r
