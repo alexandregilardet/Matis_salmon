@@ -2,6 +2,8 @@ library(ggplot2)
 library(plyr)
 library(dplyr)
 
+marker = "barson_5406"
+
 fishing <- fishing_counts_2016
 gts <- rename(gts, c("River_short" = "River"))
 data <- merge(fishing, gts, by = c("River_short"))
@@ -10,7 +12,8 @@ data$River_short <- gsub("LaD", "La_D", data$River_short)
 tbl_df = data.frame()
 #for global plot
 tbl_list = list()
-write.table(tbl_list, file = "near_vgll3_iHS_bubble.csv", 
+csvname = paste(marker, "_bubble.csv", sep="")
+write.table(tbl_list, file = csvname, 
             col.names = NA, row.names = TRUE, sep = ",")
 #to have empty column for row name
 plot_list = list() 
@@ -37,7 +40,7 @@ for (i in 1:nrow(data)) {
   tbl <- select(.data = row, freq_2SW, 
                        nd_1, nd_2, nd_3)
   tbl_list[[i]] = tbl
-  write.table(tbl, file = "near_vgll3_iHS_bubble.csv", 
+  write.table(tbl, file = csvname, 
               append = TRUE,col.names = NA, row.names = TRUE,
               sep = ",")
   
@@ -78,6 +81,6 @@ png("bubble_plot_global.png")
 print(glob_plot)
 dev.off()
 
-#put SNP of interest into gt
-#choose the name for csv file twice
+#put SNP of interest into gts
+#choose the name for csv file with marker
 #replace 0 by 0.00 in csv table
