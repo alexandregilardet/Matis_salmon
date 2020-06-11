@@ -1,6 +1,8 @@
-# https://cran.r-project.org/web/packages/BioCircos/vignettes/BioCircos.html
 
 library(plyr)
+library(BioCircos)
+
+# Plot fixed mitochondrial SNPs from both populations
 
 # Prepare genome
 
@@ -10,12 +12,12 @@ NULL -> mtref$X # remove 1st column with numbers of row after save and re-open
 
 split(mtref$Length, mtref$Gene) -> mtref # into list
 
-# Prepare total mt SNPs to get the gene and coordinate inside
+# Prepare total mitochondrial SNPs to get the gene and coordinate inside
 # according to position of later selected SNPs
 
 read.csv("C:/Users/alexa/Matis/results/26_02_20/total_snp_coord.csv", sep=";") -> snp
 
-rename(snp, c("ï..snp_gene" = "snp_gene")) -> snp
+rename(snp, c("ï¿½..snp_gene" = "snp_gene")) -> snp
 gsub("gene", "", snp$snp_gene) -> snp$snp_gene
 
 # Prepare combined SNPs
@@ -49,7 +51,6 @@ as.numeric(snp_fixed$IS.MAF) -> fixed_i_maf
 as.numeric(snp_fixed$Stofn.MAF) -> fixed_s_maf
 
 # Plot
-library(BioCircos)
 
 tracks = BioCircosSNPTrack('SNP_Island', snp_maf_gene, snp_maf_coord, values_i_maf, size = 1.5, color = 'red', opacities = 1, range = c(min_val, max_val))
 tracks = tracks + BioCircosSNPTrack('SNP_Stofnfiskur', snp_maf_gene, snp_maf_coord, values_s_maf, size = 1.5, color = 'darkblue', opacities = 0.6, range = c(min_val, max_val))

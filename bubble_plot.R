@@ -2,6 +2,10 @@ library(ggplot2)
 library(plyr)
 library(dplyr)
 
+#put SNP of interest into gts
+#choose the name for csv file with marker
+#replace 0 by 0.00 in csv table
+
 marker = "barson_5406"
 
 fishing <- fishing_counts_2016
@@ -81,6 +85,3 @@ png("bubble_plot_global.png")
 print(glob_plot)
 dev.off()
 
-#put SNP of interest into gts
-#choose the name for csv file with marker
-#replace 0 by 0.00 in csv table

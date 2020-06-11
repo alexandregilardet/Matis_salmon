@@ -2,6 +2,8 @@ library(ggplot2)
 library(plyr)
 library(dplyr)
 
+#v2 to work on input format for 124SNPs old data
+
 fishing <- fishing_counts_2016_v2
 
 #choose snp to plot and get its name

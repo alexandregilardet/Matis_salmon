@@ -10,7 +10,7 @@ from Bio.Alphabet import generic_dna
 ################################# Argparse ###################################
 parser = argparse.ArgumentParser(
     description="""Creates FASTA file for every probe in probes_124SNPs.csv and its reverse
-    complement""",
+    complement as well as a csv compiling all probes for use of grep in shell programs""",
     epilog=f"Example of use: {sys.argv[0]} -p probes_124SNPs.csv -of probes_124SNPs_with_revcomp_fasta -on probes_124SNPs_with_revcomp.csv",
     formatter_class=argparse.RawDescriptionHelpFormatter,
 )
@@ -68,13 +68,6 @@ def reverse_comp(sequence):
     rev_comp_my_dna = rev_comp_my_dna.replace("[", "]")
     rev_comp_my_dna = rev_comp_my_dna.replace("]", "[", 1)
     return rev_comp_my_dna
-
-
-def add_ambig(seq_line):
-    snp = seq_line.split("[")[1].split("]")
-    amigb_code = AMBIG_DICT[snp[0]]
-    sequence = seq_line.split("[")[0] + amigb_code + seq_line.split("]")[1]
-    return sequence
 
 
 def write_fasta_files(probes, revcomp_probes):

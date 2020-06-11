@@ -58,6 +58,7 @@ def main():
                     seq = add_ambig(line.strip())
         # print(f"{header}\n{seq}")
         write_fasta_files(name, header, seq)
+    return None
 
 
 def add_ambig(seq_line):

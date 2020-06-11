@@ -38,14 +38,14 @@ def main():
 
 
 def get_mt_alignment():
-    # reads in the alignment and returns it to a variable
+    """reads in the alignment and returns it to a variable"""
     alignment_file = args.alignment
     mt_alignment = AlignIO.read(alignment_file, "fasta")
     return mt_alignment
 
 
 def get_nd(mt_alignment):
-    # reads in alignment to get all possible nucleotides at each position by removing any N
+    """reads in alignment to get all possible nucleotides at each position by removing any N"""
     nd_pos = {}
     aln_length = mt_alignment.get_alignment_length()
     for i in range(0, aln_length):  # reads in all positions of the alignment
@@ -59,7 +59,7 @@ def get_nd(mt_alignment):
 
 def get_freq(nd_pos):
     aln_maf = {}
-    # counts nucleotides at each position and returns a dict of the one with polymorphism
+    """counts nucleotides at each position and returns a dict of the ones with polymorphism"""
     for i in nd_pos:
         if len(Counter(nd_pos[i])) == 1:
             pass
