@@ -28,7 +28,8 @@ informloci(x) -> x #uninformative loci, drop them
 summary(x) -> toto 
 names(toto)
 
-#x <- x[,loc=c('AX_87532311', 'AX_96317592', 'AX_87665320', 'AX_87220302', 'AX_87268437', 'AX_87570456')] #select loci
+#x <- x[,loc=c('AX_87532311', 'AX_96317592', 'AX_87665320', 'AX_87220302', 'AX_87268437', 'AX_87570456')] 
+#select loci
 
 plot(toto$n.by.pop, toto$pop.n.all, xlab="Colonies sample size",
      ylab="Number of alleles",main="Alleles numbers and sample sizes",

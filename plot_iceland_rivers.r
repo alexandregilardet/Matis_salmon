@@ -1,6 +1,8 @@
 library('maps')
 library('ggplot2')
 
+#Plot icelandic rivers from their coordinates on map background of Iceland 
+
 iceland <- map_data("world", region = "Iceland")
 
 map <- ggplot(iceland, aes(long, lat))+ 
