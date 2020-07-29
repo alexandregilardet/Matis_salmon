@@ -17,7 +17,7 @@ split(mtref$Length, mtref$Gene) -> mtref # into list
 
 read.csv("C:/Users/alexa/Matis/results/26_02_20/total_snp_coord.csv", sep=";") -> snp
 
-rename(snp, c("ï¿½..snp_gene" = "snp_gene")) -> snp
+rename(snp, c("ï..snp_gene" = "snp_gene")) -> snp
 gsub("gene", "", snp$snp_gene) -> snp$snp_gene
 
 # Prepare combined SNPs
@@ -48,6 +48,7 @@ merge(snp, fixed) -> snp_fixed
 as.numeric(snp_fixed$snp_coord) -> fixed_coord
 as.character(snp_fixed$snp_gene) -> fixed_gene
 as.numeric(snp_fixed$IS.MAF) -> fixed_i_maf
+
 as.numeric(snp_fixed$Stofn.MAF) -> fixed_s_maf
 
 # Plot
